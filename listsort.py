@@ -1,20 +1,42 @@
-class numbers():
-        def __init__(self, mynumbers):
-                self.mynumbers = mynumbers
-        def myfunc(self):
-                x = sorted(mynumbers)
-                print(x)       
-                if mynumbers % 2 == 0:
-                        return 'evens'
-                elif mynumbers % 2 >= 1:
-                        return 'odds' 
-                elif mynumbers == chr:
-                        return 'chrs'
+def list_sort(jumbled_list):
+    sorted_dict = {}
+    evens = []
+    odds = []
+    characters = []
 
-mynumbers = [1, 2, 3, 4, 5, 6, 7, 8, 'a', 'b', 'c', 'd', 'e', 'f']
-print(numbers)                
-    
-    
-                
-               
-                
+    for item in jumbled_list:
+        if type(item) == int:
+            # these are numbers
+            if item % 2 == 0:
+                # this is even
+                evens.append(item)
+            else:
+                # this is odd
+                odds.append(item)
+        if type(item) == str:
+            # these are characters
+            characters.append(item)
+        if type(item) == float:
+            # these are floats, just skip them
+            # continue
+            odds.append(item)
+    # end of for loop
+
+    # now do the sorting
+    sorted_evens = sorted(evens)
+    sorted_odds = sorted(odds)
+    sorted_chars = sorted(characters)
+
+    sorted_dict = {
+        'evens': sorted_evens,
+        'odds': sorted_odds,
+        'chars': sorted_chars
+    }
+    return sorted_dict
+
+unsorted_list = [8.0,'f', 9.0,'o', 2, 76, 0, 'i', 44.7, 'x', 'e',0.9, 5, 33, 0,'g',3.1]
+print("before sorting")
+print(unsorted_list)
+result = list_sort(unsorted_list)
+print("after sorting")
+print(result)
